@@ -27,8 +27,17 @@ class CuentaTest {
     }
 
     @Test
-    void extraerDinero() {
+    void extraerDinero_exception() {
+        try{
+            Cuenta cuentaPedro = new Cuenta("ES20",100);
+            cuentaPedro.extraerDinero(120);
+            fail ("ERROR. Se debería haber lanzado una excepción al resultar un saldo negativo");
+        }
+        catch (ArithmeticException ae){ //Prueba correcta
+
+        }
     }
+
 
     @Test
     void mostrarCuenta() {
@@ -43,7 +52,7 @@ class CuentaTest {
     void getSaldo2() {
         Cuenta cuentaPedro = new Cuenta("ES20",100);
         float saldo = cuentaPedro.getSaldo();
-        assertEquals(50,saldo);
+        assertEquals(100,saldo);
     }
 
 }
